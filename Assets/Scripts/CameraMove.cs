@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent (typeof(AudioSource))]
 public class CameraMove : MonoBehaviour
 {
-
+    
     //float cameraStart, cameraBet, cameraEnd;
     public Transform cameraBet = null;
      float lerpFraction; 
      float time = 0f;
-     //float boo;
+    AudioSource source;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +22,7 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // USE?  time += Time.deltaTime * AudioSpectrum.audioAmp;
+       time += Time.deltaTime * AudioSpectrum.audioAmp;
         //Debug.Log(AudioSpectrum.audioAmp);
         // what to update over time?
             // Lerp : Linearly interpolates between two points.
