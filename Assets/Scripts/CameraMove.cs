@@ -30,12 +30,11 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      time += Time.deltaTime * AudioSpectrum.audioAmp;
-        //Debug.Log(AudioSpectrum.audioAmp);
-        // Vector3.Lerp(startPosition, endPosition, lerpFraction)  
-     // lerpFraction = Mathf.Sin(time) * 0.5f + 0.5f;
            
        if (splineAnimate == null) return;
+     
+      // time += Time.deltaTime * AudioSpectrum.audioAmp;
+     
        lerpFraction  = Mathf.Lerp(lerpFraction, AudioSpectrum.audioAmp, 0.1f);
 
         // Speed = base speed + audio amplitude scaled by influence factor
@@ -49,5 +48,9 @@ public class CameraMove : MonoBehaviour
 
         // apply to spline
         splineAnimate.NormalizedTime = normalizedPosition;
+
+        //size changes
+        float scale = 1f + AudioSpectrum.audioAmp;
+        transform.localScale = new Vector3(scale, 1f, 1f);
     }
 }
